@@ -56,7 +56,7 @@ public class CaisseEnregistreuse {
 			if (!devise.equals("€")) {
 				valeur = ConversionUtil.convertirEnEuros(valeur, devise);
 			}
-			total = valeur;
+			total += valeur;
 		}
 		return total;
 	}
@@ -106,7 +106,7 @@ public class CaisseEnregistreuse {
 	public float calculerLaCaisseEnFinDeJournee() {
 		BigDecimal total = new BigDecimal(0, MathContext.UNLIMITED);
 		for (SommeDeArgent sommeDeFric : paiements) {
-			total = sommeDeFric.toDevise(SommeDeArgent.EURO);
+			total += sommeDeFric.toDevise(SommeDeArgent.EURO);
 		}
 		return total.floatValue();
 	}
